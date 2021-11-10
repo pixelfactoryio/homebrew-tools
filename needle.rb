@@ -5,37 +5,52 @@
 class Needle < Formula
   desc "Small HTTP/1.1, HTTP/2, server with TLS support, that block ads and trackers."
   homepage "https://github.com/pixelfactoryio/needle"
-  version "0.2.3"
+  version "0.2.4"
   license "MIT"
-  bottle :unneeded
 
   on_macos do
     if Hardware::CPU.intel?
-      url "https://github.com/pixelfactoryio/needle/releases/download/v0.2.3/needle_Darwin_x86_64.tar.gz"
-      sha256 "0355fc5daffc02200a9013e435d5ed3b89a484faf559e08cf8aff789d8468400"
+      url "https://github.com/pixelfactoryio/needle/releases/download/v0.2.4/needle_Darwin_x86_64.tar.gz"
+      sha256 "cfd537d21cc09551dd6ee4d08ea1f6bf0bd3f55b106ab862ad236c90cf4d0e59"
+
+      def install
+        bin.install "needle"
+      end
     end
     if Hardware::CPU.arm?
-      url "https://github.com/pixelfactoryio/needle/releases/download/v0.2.3/needle_Darwin_arm64.tar.gz"
-      sha256 "3ea740a2cbb5596b802c249c02fc783872f9d470e525997129db6b8da67d67e4"
+      url "https://github.com/pixelfactoryio/needle/releases/download/v0.2.4/needle_Darwin_arm64.tar.gz"
+      sha256 "5dcd562f976e0181a0661353d86551329542c37b61d5f676abeda09fdd603284"
+
+      def install
+        bin.install "needle"
+      end
     end
   end
 
   on_linux do
-    if Hardware::CPU.intel?
-      url "https://github.com/pixelfactoryio/needle/releases/download/v0.2.3/needle_Linux_x86_64.tar.gz"
-      sha256 "5065ee96735fe7737db21783dded16384e7db56d2e49a3b32f2cf662c6c4c541"
-    end
     if Hardware::CPU.arm? && !Hardware::CPU.is_64_bit?
-      url "https://github.com/pixelfactoryio/needle/releases/download/v0.2.3/needle_Linux_armv6.tar.gz"
-      sha256 "379a9b98c689d52dac3db91487870968604a7076283581dd2ef47e643551c4b6"
+      url "https://github.com/pixelfactoryio/needle/releases/download/v0.2.4/needle_Linux_armv6.tar.gz"
+      sha256 "7340b94c628f9fb78e07a548c7f38058880f6efc9304d988ab46c8294c63c399"
+
+      def install
+        bin.install "needle"
+      end
+    end
+    if Hardware::CPU.intel?
+      url "https://github.com/pixelfactoryio/needle/releases/download/v0.2.4/needle_Linux_x86_64.tar.gz"
+      sha256 "241be4cbf57c3cd965eba580e107cd5d4d91632e63889fb8f477a3f372976c03"
+
+      def install
+        bin.install "needle"
+      end
     end
     if Hardware::CPU.arm? && Hardware::CPU.is_64_bit?
-      url "https://github.com/pixelfactoryio/needle/releases/download/v0.2.3/needle_Linux_arm64.tar.gz"
-      sha256 "d6ffdf8d98e8cc6ad14151287d52f6df89d7ef8dc3c30d6bfad271f8c510db6f"
-    end
-  end
+      url "https://github.com/pixelfactoryio/needle/releases/download/v0.2.4/needle_Linux_arm64.tar.gz"
+      sha256 "7f3c9f8bc583f3c49558308aba03f1ed8d88ca7f9d404bc454e8de51bde41301"
 
-  def install
-    bin.install "needle"
+      def install
+        bin.install "needle"
+      end
+    end
   end
 end
